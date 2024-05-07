@@ -17,17 +17,26 @@ form.addEventListener("submit", (event) => {
 
   if ( dividend === "" || divider === "") {
     result.innerText = "Division not performed. Both values are required in inputs. Try again";
-    return
+    return;
+  }
+
+  if ( isNaN(dividend) || isNaN(divider) ) {
+    console.error("Invalid input values", new Error("Input values should be numbers.") );
+    result.classList.add("critical-error");
+    result.innerText = "Something critical went wrong. Please reload the page.";
+    return;
   }
 
   if ( divider === "0" ) {
 
-    console.error("Invalid divider",new Error("Divided by Zero"));
+    console.error("Invalid divider", new Error("Divided by Zero"));
 
     result.innerText = "Division not performed. Invalid number provided. Try again.";
 
-    return
+    return;
   }
 
+  
+  
   result.innerText = divideResult;
 });
