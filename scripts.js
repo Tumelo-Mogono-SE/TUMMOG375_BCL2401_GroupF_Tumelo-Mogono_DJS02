@@ -20,5 +20,14 @@ form.addEventListener("submit", (event) => {
     return
   }
 
+  if ( divider === "0" ) {
+
+    console.error("Invalid divider",new Error("Divided by Zero"));
+
+    result.innerText = "Division not performed. Invalid number provided. Try again.";
+
+    return
+  }
+
   result.innerText = divideResult;
 });
