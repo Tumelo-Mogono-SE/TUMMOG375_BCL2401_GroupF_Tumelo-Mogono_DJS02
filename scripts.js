@@ -13,7 +13,9 @@ form.addEventListener("submit", (event) => {
 
   try {
     if ( dividend === "" || divider === "") {
+      
       result.innerText = "Division not performed. Both values are required in inputs. Try again";
+      result.classList.add("error-message");
   
     } else if (isNaN(dividend) || isNaN(divider)) {
       throw new Error("Input values should be numbers.")
@@ -21,9 +23,10 @@ form.addEventListener("submit", (event) => {
       
     } else if ( divider === "0") {
       throw new Error("Divided by zero")
-      
-      
+    } else if ( dividend < 0 || divider < 0) {
+      throw new Error("Input values should be postive numbers");
     } else {
+      result.classList.remove("error-message");
       result.innerText = Math.floor(divideResult);
       console.log(divideResult)
     };
@@ -31,11 +34,17 @@ form.addEventListener("submit", (event) => {
     if (error.message === "Input values should be numbers.") {
       result.classList.add("critical-error");
       result.innerText = "Something critical went wrong. Please reload the page.";
+      console.error("An unexpected error occurred,", error)
     } else if (error.message === "Divided by zero") {
       result.classList.add("error-message");
       result.innerText = "Division not performed. Invalid number provided. Try again.";
+      console.error("An unexpected error occurred,", error)
+    } else if (error.message === "Input values should be postive numbers") {
+      result.classList.add("error-message");
+      result.innerText = "Division not performed. Invalid number provided. Try again.";
+      console.error("An unexpected error occurred,", error);
     } else {
-      console.error("An unexpected error occurred:", error);
+      console.error("An unexpected error occurred,", error);
       result.classList.add("error-message");
       result.innerText = "An unexpected error occurred. Please try again later.";
     }
