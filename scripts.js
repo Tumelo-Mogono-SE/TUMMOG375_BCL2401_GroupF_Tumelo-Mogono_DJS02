@@ -5,9 +5,6 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
-
-  console.log(dividend);
-  console.log(divider)
   
   let divideResult = dividend / divider;
 
@@ -28,7 +25,6 @@ form.addEventListener("submit", (event) => {
     } else {
       result.classList.remove("error-message");
       result.innerText = Math.floor(divideResult);
-      console.log(divideResult)
     };
   } catch (error) {
     if (error.message === "Input values should be numbers.") {
@@ -48,6 +44,6 @@ form.addEventListener("submit", (event) => {
       result.classList.add("error-message");
       result.innerText = "An unexpected error occurred. Please try again later.";
     }
-  }
+  };
 
 });
