@@ -40,5 +40,5 @@ form.addEventListener("submit", (event) => {
       result.innerText = "An unexpected error occurred. Please try again later.";
     }
   }
-  
+
 });
