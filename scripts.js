@@ -8,6 +8,9 @@ form.addEventListener("submit", (event) => {
   
   let divideResult = dividend / divider;
 
+  // Added try catch method to run the conditional statements to check whether inputs are not empty, are not a number, the divider is not a zero and if the inputs are not a negative number
+  // If true I throw specific error messages which are caught in the catch, if false the results of the inputs is inserted into the result element and if it is a decimal it is rounded off.
+  // In the catch a have conditional statements which check if the error message matches the provided string and if true error messages are consoled and a classlist is added to the result element to utilize the CSS style provided.
   try {
     if ( dividend === "" || divider === "") {
       
@@ -16,7 +19,7 @@ form.addEventListener("submit", (event) => {
   
     } else if (isNaN(dividend) || isNaN(divider)) {
       throw new Error("Input values should be numbers.")
-      // console.error("Invalid input values", new Error("Input values should be numbers.") );
+
       
     } else if ( divider === "0") {
       throw new Error("Divided by zero")
